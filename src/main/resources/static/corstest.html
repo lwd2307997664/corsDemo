@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CORS跨域效果验证</title>
+    <script src="js/jquery/jquery.js"></script>
+</head>
+<body>
+    <div id="message"></div>
+    <input type="button" value="提交" onclick="submitData()"><br>
+    <input type="button" value="删除" onclick="deleteData()"><br>
+    <input type="button" value="局部跨域1" onclick="cors1()"><br>
+    <input type="button" value="局部跨域2" onclick="cors2()"><br>
+<script>
+    function submitData() {
+        $.ajax({
+            url:'http://localhost:8080/api/hello',
+            type:'GET',
+            success:function (msg) {
+                $("#message").html(msg);
+            }
+        })
+    }
+    function deleteData() {
+        $.ajax({
+            url:'http://localhost:8080/api/demo',
+            type:'GET',
+            success:function (msg) {
+                $("#message").html(msg);
+            }
+        })
+    }
+    function cors1() {
+        $.ajax({
+            url:'http://localhost:8080/api/cors/1',
+            type:'GET',
+            success:function (msg) {
+                $("#message").html(msg);
+            }
+        })
+    }
+    function cors2() {
+        $.ajax({
+            url:'http://localhost:8080/api/cors/2',
+            type:'GET',
+            success:function (msg) {
+                $("#message").html(msg);
+            }
+        })
+    }
+</script>
+</body>
+</html>
